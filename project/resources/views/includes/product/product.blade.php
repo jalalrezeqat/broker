@@ -1,7 +1,5 @@
 
-									<div class="col-lg-4 col-md-4 col-6 remove-padding">
-
-
+									<div class="col-lg-4 col-md-4 col-6 remove-padding">	
 										<a href="{{ route('front.product', $prod->slug) }}" class="item">
 											<div class="item-img">
 												@if(!empty($prod->features))
@@ -46,6 +44,7 @@
                                 <div class="empty-stars"></div>
                                 <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
                             </div>
+							
 												</div>
 												<h4 class="price">{{ $prod->setCurrency() }} <del><small>{{ $prod->showPreviousPrice() }}</small></del></h4>
 														<h5 class="name">{{ $prod->showName() }}</h5>

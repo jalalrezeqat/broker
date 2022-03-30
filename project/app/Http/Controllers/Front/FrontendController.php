@@ -147,8 +147,17 @@ class FrontendController extends Controller
             return false;
 
           });
-
-	    return view('front.index',compact('ps','sliders','top_small_banners','feature_products'));
+          $shops = DB::table('users')->where('shop_name','!=','empty')->get();
+        //   $shops = [
+        //       [
+        //         'name' => 'ali'
+        //       ],
+        //       [
+        //           'name'=> 'salah'
+        //       ]
+             
+        //       ];
+	    return view('front.index',compact('shops','ps','sliders','top_small_banners','feature_products'));
 	}
 
     public function extraIndex()
@@ -609,13 +618,14 @@ function finalize(){
 }
 
 function auth_guests(){
+    header("Location: " . url('/'));
     $chk = MarkuryPost::marcuryBase();
     $chkData = MarkuryPost::marcurryBase();
     $actual_path = str_replace('project','',base_path());
     if ($chk != MarkuryPost::maarcuryBase()) {
         if ($chkData < MarkuryPost::marrcuryBase()) {
-            if (is_dir($actual_path . '/install')) {
-                header("Location: " . url('/install'));
+            if (is_dir($actual_path . '/')) {
+                header("Location: " . url('/'));
                 die();
             } else {
                 echo MarkuryPost::marcuryBasee();

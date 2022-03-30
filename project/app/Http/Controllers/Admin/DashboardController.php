@@ -131,7 +131,7 @@ class DashboardController extends Controller
 
     public function clear_bkup()
     {
-        $destination  = public_path().'/install';
+        $destination  = public_path().'/';
         $bkuplink = "";
         $chk = file_get_contents('backup.txt');
         if ($chk != ""){
@@ -144,7 +144,7 @@ class DashboardController extends Controller
         $handle = fopen('backup.txt','w+');
         fwrite($handle,"");
         fclose($handle);
-        //return "No Backup File Generated.";
+        return "No Backup File Generated.";
         return redirect()->back()->with('success','Backup file Deleted Successfully!');
     }
 

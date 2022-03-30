@@ -1,4 +1,4 @@
-
+<?php redirect('/');?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -532,6 +532,18 @@
                           </div>
                         </div>
 
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Shops *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" placeholder="Shops" name="lang900" value="{{ $lang->lang900 }}" required="">
+                          </div>
+                        </div>
+
                       <hr>
                         
                         <h4 class="text-center">BLOG</h4>
@@ -3858,6 +3870,8 @@
                                                       <input type="text" class="input-field" placeholder="Back Home" name="lang430" value="{{ $lang->lang430 }}" required="">
                                                     </div>
                                                   </div>
+
+                                                  
 
 
 

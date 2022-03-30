@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+	 <!-- CSS Styles -->
+<style>
+	.speech {border: 1px solid #DDD; width: 100%; padding: 0; margin: 0}
+	.speech input {border: 0; width: 80%; display: inline-block; height: 30px;}
+	.speech img {float: right; width: 40px }
+  </style>
+  
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,7 +31,7 @@
     	<title>{{substr($productt->name, 0,11)."-"}}{{$gs->title}}</title>
     @else
 	    <meta name="keywords" content="{{ $seo->meta_keys }}">
-	    <meta name="author" content="GeniusOcean">
+	    <meta name="author" content="broker">
 		<title>{{$gs->title}}</title>
     @endif
 	<!-- favicon -->
@@ -226,6 +233,14 @@
 								</select>
 							</div>
 
+
+							{{-- <form id="searchForm" method="GET" action="{{ route('front.category', [Request::route('category'),Request::route('subcategory'),Request::route('childcategory')]) }}">
+								<div class="speech">
+								  <input type="text" name="q" id="prod_name" placeholder="Speak" />
+								  <img onclick="startDictation()" src="https://image.shutterstock.com/image-vector/microphone-icon-graphic-design-projects-600w-1918715636.jpg" />
+								</div>
+							  </form> --}}
+							  
 							<form id="searchForm" class="search-form" action="{{ route('front.category', [Request::route('category'),Request::route('subcategory'),Request::route('childcategory')]) }}" method="GET">
 								@if (!empty(request()->input('sort')))
 									<input type="hidden" name="sort" value="{{ request()->input('sort') }}">
@@ -240,6 +255,9 @@
 								<div class="autocomplete">
 								  <div id="myInputautocomplete-list" class="autocomplete-items">
 								  </div>
+								</div>
+								<div class="speech">
+								  <img onclick="startDictation()" src="https://image.shutterstock.com/image-vector/microphone-icon-graphic-design-projects-600w-1918715636.jpg" />
 								</div>
 								<button type="submit"><i class="icofont-search-1"></i></button>
 							</form>
@@ -1074,3 +1092,34 @@
 </body>
 
 </html>
+
+<script>
+	function startDictation() {
+   
+	  if (window.hasOwnProperty('webkitSpeechRecognition')) {
+   
+		var recognition = new webkitSpeechRecognition();
+   
+		recognition.continuous = false;
+		recognition.interimResults = false;
+		
+		 
+			recognition.lang = "en-EN";
+		
+		recognition.start();
+   
+		recognition.onresult = function(e) {
+		  document.getElementById('prod_name').value
+								   = e.results[0][0].transcript;
+		  recognition.stop();
+		  document.getElementById('searchForm').submit();
+		};
+   
+		recognition.onerror = function(e) {
+		  recognition.stop();
+		}
+   
+	  }
+	}
+  </script>
+  

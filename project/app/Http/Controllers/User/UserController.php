@@ -14,7 +14,10 @@ use App\Models\Subscription;
 use App\Models\Generalsetting;
 use App\Models\UserSubscription;
 use App\Models\FavoriteSeller;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 class UserController extends Controller
 {
     public function __construct()
@@ -22,8 +25,40 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index( Request $request)
     {
+        // $this->code_image();
+        //  if(!empty($request->reff))
+        //  {
+        //     $affilate_user = User::where('affilate_code','=',$request->reff)->first();
+        //     if(!empty($affilate_user))
+        //     {
+        //         $gs = Generalsetting::findOrFail(1);
+        //         if($gs->is_affilate == 1)
+        //         {
+        //             Session::put('affilate', $affilate_user->id);
+        //             return redirect()->route('front.index');
+        //         }
+
+        //     }
+
+        //  }
+        // $selectable = ['id','user_id','name','slug','features','colors','thumbnail','price','previous_price','attributes','size','size_price','discount_date'];
+        // $sliders = DB::table('sliders')->get();
+        // $top_small_banners = DB::table('banners')->where('type','=','TopSmall')->get();
+        // $ps = DB::table('pagesettings')->find(1);
+        // $feature_products =  Product::with('user')->where('featured','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(8)->get()->reject(function($item){
+
+        //     if($item->user_id != 0){
+        //       if($item->user->is_vendor != 2){
+        //         return true;
+        //       }
+        //     }
+        //     return false;
+
+        //   });
+
+	    // return view('front.index',compact('ps','sliders','top_small_banners','feature_products'));
         $user = Auth::user();  
         return view('user.dashboard',compact('user'));
     }
