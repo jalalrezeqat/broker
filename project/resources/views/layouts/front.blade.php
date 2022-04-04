@@ -251,14 +251,15 @@
 								@if (!empty(request()->input('maxprice')))
 									<input type="hidden" name="maxprice" value="{{ request()->input('maxprice') }}">
 								@endif
-								<input type="text" id="prod_name" name="search" placeholder="{{ $langg->lang2 }}" value="{{ request()->input('search') }}" autocomplete="off">
+								<div class="speech">
+									<input type="text" id="prod_name" name="search" placeholder="{{ $langg->lang2 }}" value="{{ request()->input('search') }}" autocomplete="off">
+									<img onclick="startDictation()" src="https://image.shutterstock.com/image-vector/microphone-icon-graphic-design-projects-600w-1918715636.jpg" />
+								  </div>
 								<div class="autocomplete">
 								  <div id="myInputautocomplete-list" class="autocomplete-items">
 								  </div>
 								</div>
-								<div class="speech">
-								  <img onclick="startDictation()" src="https://image.shutterstock.com/image-vector/microphone-icon-graphic-design-projects-600w-1918715636.jpg" />
-								</div>
+								
 								<button type="submit"><i class="icofont-search-1"></i></button>
 							</form>
 						</div>
